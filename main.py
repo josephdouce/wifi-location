@@ -4,7 +4,9 @@ import math
 from datetime import datetime
 from flask import Flask, render_template, jsonify, request
 import mysql.connector
+import git
 from config import config
+
 
 # function to get distance from access point
 # ss = signal strength due to access point at a particular point
@@ -126,7 +128,6 @@ def location():
     matches = matchBssids(request.json["ap_data"])
     if len(matches) > 0:
         coords = trilateratePosition(matches)
-        coords.append(datetime.now())
         con = mysql.connector.connect(**config)
         cur = con.cursor()
         cur.execute("REPLACE INTO device_locations VALUES (%s, %s, %s, %s, %s)",
@@ -183,6 +184,17 @@ def aps():
 
     response = jsonify(ap_locations)
     return response
+
+
+@app.route('/update', methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        #repo = git.Repo('https://github.com/josephdouce/wifi-location.git')
+        #origin = repo.remotes.origin
+        #origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
 
 
 if __name__ == "__main__":
