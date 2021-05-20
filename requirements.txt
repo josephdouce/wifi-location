@@ -1,0 +1,7 @@
+winwifi==1.0.3
+opencv_python==4.5.2.52
+scipy==1.6.3
+Flask==1.1.2
+access_points==0.4.66
+requests==2.25.1
+mysql-connector-python==8.0.25
