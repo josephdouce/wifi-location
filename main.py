@@ -191,6 +191,7 @@ def webhook():
     if request.method == 'POST':
         repo = git.Repo('./')
         origin = repo.remotes.origin
+        print(origin)
         origin.pull()
         return 'Updated PythonAnywhere successfully', 200
     else:
