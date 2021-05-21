@@ -5,7 +5,7 @@ from datetime import datetime
 from flask import Flask, render_template, jsonify, request
 import mysql.connector
 import git
-from config import config
+from config import config, gitHubToken
 
 
 # function to get distance from access point
@@ -189,7 +189,7 @@ def aps():
 @app.route('/update', methods=['POST'])
 def webhook():
     if request.method == 'POST':
-        repo = git.Repo('https://github.com/josephdouce/wifi-location.git')
+        repo = git.Repo('https://' + gitHubToken + ':x-oauth-basic@github.com/josephdouce/wifi-location.git')
         origin = repo.remotes.origin
         origin.pull()
         return 'Updated PythonAnywhere successfully', 200
