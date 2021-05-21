@@ -4,3 +4,5 @@ config = {
     'host': 'host',
     'database': 'user$database'
 } 
+
+gitHubAuth = 'token'
