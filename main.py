@@ -5,7 +5,7 @@ from datetime import datetime
 from flask import Flask, render_template, jsonify, request
 import mysql.connector
 import git
-from config import config, gitHubToken
+from config import config
 
 
 # function to get distance from access point
