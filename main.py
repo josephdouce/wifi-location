@@ -187,7 +187,7 @@ def aps():
 
 
 @app.route('/update', methods=['POST'])
-def webhook():
+def update():
     if request.method == 'POST':
         repo = git.Repo('./')
         origin = repo.remotes.origin
